@@ -3,7 +3,6 @@
     $.fn.album=function (options) {
         //public variable
         var windowWidth=$(window).width();
-        var imagesURL=options.imagesURL;
         var albumWidth=options.albumWidth;
         var albumHeight=options.albumHeight;
         var rowLength=options.rowLength;
@@ -16,7 +15,6 @@
         var imageBorderColor=options.imageBorderColor;
         var boxArray=new Array();
         options=$.extend({
-            imagesURL:[],
             albumWidth:windowWidth,
             albumHeight:'auto',
             rowLength:6,
@@ -29,19 +27,27 @@
             imageBorderColor:'white'
         },options);
 
-        //createBoxes
-        if(imagesURL!="") {
-            for (var i = 0; i < imagesURL.length; i++) {
-                var box = document.createElement('div');
-                box.className = 'box';
-                var img = document.createElement('img');
-                img.src = imagesURL[i];
-                box.appendChild(img);
-                $(this).append(box);
+        //album's and box's style
+        if(rowLength!=null){
+            $(this).css({
+                "width":albumWidth
+            })
+            $('.box',this).css({
+                "margin":boxDistance/2
+            })
+            var boxWidth=$(this).width()/rowLength;
+            var boxPadding;
+            if(imageBorderWidth!=undefined){
+                boxPadding=imageBorderWidth;
+            }else{
+                boxPadding=0;
             }
-        }else{
-            console.error('album:imagesURL should not be empty!');
+            $('.box img',this).css({
+                "width":boxWidth-boxDistance-2*boxPadding
+            })}else {
+            console.error("album:rowLength should not be empty!")
         }
+console.log(imageBorderWidth);
 
         //albumBorder
         if(albumHeight!="auto"){
@@ -63,22 +69,6 @@
             $('.box',this).css({
                 "padding":0,
             })
-        }
-
-        //album's and box's style
-        if(rowLength!=null){
-            $(this).css({
-                "width":albumWidth
-            })
-        $('.box',this).css({
-            "margin":boxDistance/2
-        })
-        var boxWidth=$(this).width()/rowLength;
-            var boxPadding=parseInt($('.box',this).css('padding'));
-        $('.box img',this).css({
-            "width":boxWidth-boxDistance-2*boxPadding
-        })}else {
-            console.error("album:rowLength should not be empty!")
         }
 
         //albumHeight
