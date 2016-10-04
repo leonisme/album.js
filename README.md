@@ -60,11 +60,11 @@ $(window).on('load',function () {
 - `albumBorderStyle`:(Default `solid`) Defines the CSS border-style property for the album.
 - `albumBorderColor`:(Default `black`) Defines the CSS border-color property for the album.
 - `albumBorder`:(Default `0 solid black`) Defines the CSS border property for the album.
-- `albumBgColor`:(Default `black`) Determines the color of album’s background.
+- `albumBgColor`:(Default `white`) Determines the color of album’s background.
 - `rowLength`:(Default `6`) Determines how many pictures can be placed in the first row.
 - `boxDistance`:(Default `14`) Determines the distance between two pictures.
 - `imageBorderWidth`:(Default `0`) Determines width of the photo frames.
-- `imageBorderColor`:(Default `white`) Determines color of the photo frames.
+- `imageBorderColor`:(Default `black`) Determines color of the photo frames.
 
 
 
