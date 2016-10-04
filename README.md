@@ -49,7 +49,7 @@ $(window).on('load',function () {
         rowLength:6,
         boxDistance:14,
         imageBorderWidth: 0,
-        imageBorderColor:'white'
+        imageBorderColor:'black'
     })
 })
 ```
