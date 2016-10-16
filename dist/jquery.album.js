@@ -14,6 +14,7 @@
         var imageDistance=options.imageDistance;
         var imageBorderWidth=options.imageBorderWidth;
         var imageBorderColor=options.imageBorderColor;
+        var fullScreen=options.fullScreen;
         var boxArray=new Array();
         options=$.extend({
             albumWidth:windowWidth,
@@ -26,7 +27,8 @@
             albumBgColor:'black',
             imageDistance:14,
             imageBorderWidth:0,
-            imageBorderColor:'white'
+            imageBorderColor:'white',
+            fullScreen:'true'
         },options);
 
         //album's and box's style
@@ -132,5 +134,39 @@
                 boxArray[minHeightIndex]+=boxHeight;
             }
         })
+
+        //fullScreen
+        function showFullScreen(src){
+            //background
+            var body=document.body;
+            var fullScreen=document.createElement('div');
+            fullScreen.className="fullScreen";
+            body.appendChild(fullScreen);
+            //close
+            var close=document.createElement('div');
+            close.className="close";
+            var line1=document.createElement('div');
+            line1.className="line1";
+            var line2=document.createElement('div');
+            line2.className="line2";
+            close.appendChild(line1);
+            close.appendChild(line2);
+            fullScreen.appendChild(close);
+            //img
+            var img=document.createElement('img');
+            img.src=src;
+            fullScreen.appendChild(img);
+            //remove
+            close.onclick=function(){
+                var fullScreen=document.getElementsByClassName('fullScreen')[0];
+                body.removeChild(fullScreen);
+            }
+        }
+if(fullScreen!=undefined||fullScreen!='false'||fullScreen=='true'){
+    $('.box',this).css('cursor','pointer');
+    $('img',this).click(function(event){
+        var src=event.target.src;
+        showFullScreen(src);
+    });}
     }
 })(jQuery);
