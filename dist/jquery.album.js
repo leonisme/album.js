@@ -39,8 +39,7 @@
             $('.box',this).css({
                 "margin" : imageDistance / 2
             })
-            var boxWidth = $(this).width() / rowLength;
-            console.log($(this).width());
+            var boxWidth = ($(this).width() - 17) / rowLength;
             var boxPadding;
             if (imageBorderWidth != undefined){
                 boxPadding = imageBorderWidth;
@@ -115,7 +114,7 @@
         //albumScroll
         if (albumHeight != undefined){
             $(this).css({
-                "overflow" : "scroll"
+                "overflow-y" : "scroll"
             })
         }
 
@@ -135,6 +134,10 @@
                 boxArray[minHeightIndex] += boxHeight;
             }
         })
+
+        console.log(document.getElementById('album').offsetWidth);
+        console.log(document.getElementById('album').clientWidth);
+
 
         //fullScreen
         function showFullScreen(src){
